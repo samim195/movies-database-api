@@ -1,0 +1,18 @@
+.Search {
+  outline: auto;
+  border: bisque;
+  font-size: 30;
+  padding: 50;
+  flex: initial;
+  color: rgb(90, 90, 90);
+  font-weight: 100;
+  height: 100px;
+  width: 400px;
+  background-color: #282c34;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  text-align: center;
+  padding-left: 16px;
+}
