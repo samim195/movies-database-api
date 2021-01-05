@@ -2,11 +2,11 @@ import './App.css';
 import './Form.css'
 import $ from 'jquery';
 import { React, Component } from 'react';
-import MovieRow from './MovieRow';
+import MovieRow from './Home/MovieRow';
 import PeopleRow from './Home/PeopleRow'
 import TvRow from './Home/TvRow'
-import Details from './Details.js';
-import Actors from './Actors';
+import Details from './Details/Details';
+import Actors from './Actors/Actors';
 import ShowsDetailPage from './showsDetailPage/ShowsDetailPage'
 import { Route, Switch, Link } from 'react-router-dom';
 // import './dropdown.css'

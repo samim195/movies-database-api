@@ -1,5 +1,5 @@
 import React from 'react';
-import './MovieRow.css';
+import '../Home/MovieRow.css'
 import { withRouter, Link } from 'react-router-dom';
 
 class CastRow extends React.Component {
@@ -15,14 +15,14 @@ class CastRow extends React.Component {
         
         </td>
         <td>
-            <button><h3>Title: {this.props.cast.name}</h3></button>
+            <h3>Title: {this.props.cast.name}</h3>
             <Link
             to={{
                 pathname: "/Actors",
                 id: this.props.cast.name // your data array of objects
             }}
             >
-            <button type='button'>Actors Page</button>
+            <button type='button'>Cast Page</button>
             </Link>
             <div>
             <p><b>Summary</b>: {this.props.cast.overview}</p>

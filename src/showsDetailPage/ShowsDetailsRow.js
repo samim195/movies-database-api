@@ -1,5 +1,5 @@
 import React from 'react';
-import '../MovieRow.css';
+import '../Home/MovieRow.css';
 import { withRouter, Link } from 'react-router-dom';
 
 class ShowsDetailsRow extends React.Component {

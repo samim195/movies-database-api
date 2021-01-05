@@ -2,7 +2,7 @@ import Link from 'react-router-dom';
 import { React, Component } from 'react';
 import $ from 'jquery';
 import { withRouter } from 'react-router-dom';
-import ActorRow from './ActorRow.js';
+import ActorRow from './ActorRow';
 
 class Actors extends Component {
     constructor(props) {
