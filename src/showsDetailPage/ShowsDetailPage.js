@@ -29,7 +29,8 @@ class ShowsDetailPage extends Component {
                 //     // console.log(key, searchResults[key]);
                 //     showsArray[key] = searchResults[key]
                 // });
-                showsArray.push(<ShowsDetailsRow shows={searchResults}/>)
+                searchResults.poster_src = "https://image.tmdb.org/t/p/w185" + searchResults.poster_path
+                showsArray.push(<ShowsDetailsRow key={searchResults.id} shows={searchResults}/>)
 
                 this.setState({showsDetailList: showsArray})
             },

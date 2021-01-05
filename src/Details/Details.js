@@ -25,7 +25,8 @@ class Details extends Component {
             var casts = []
 
             results.forEach((cast) => {
-                casts.push(<CastRow cast={cast}/>)
+                cast.poster_src = "https://image.tmdb.org/t/p/w185" + cast.profile_path
+                casts.push(<CastRow key={cast.id} cast={cast}/>)
             });
             this.setState({castList: casts});
         },

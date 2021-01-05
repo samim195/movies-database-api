@@ -27,6 +27,9 @@ class MovieRow extends React.Component {
             <div>
             <p><b>Summary</b>: {this.props.movie.overview}</p>
             </div>
+            <div>
+                <img src={this.props.movie.poster_src} alt="prof pic" width="400" height="400"/>
+            </div>
             <div style={{display: this.state.showDiv ? 'block' : 'none'}} id={this.props.movie.id}>
                 <p><b>Popularity</b>: {this.props.movie.popularity}</p>
                 <p><b>Release Date</b>: {this.props.movie.release_date}</p>

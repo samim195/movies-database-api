@@ -27,6 +27,9 @@ class CastRow extends React.Component {
             <div>
             <p><b>Summary</b>: {this.props.cast.overview}</p>
             </div>
+            <div>
+            <img src={this.props.cast.poster_src} alt="prof pic" width="250" height="250"/>
+            </div>
             <div id={this.props.cast.id}>
                 <p><b>Popularity</b>: {this.props.cast.popularity}</p>
                 <p><b>Gender</b>: {this.props.cast.gender}</p>

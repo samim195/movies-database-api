@@ -43,8 +43,9 @@ class App extends Component {
         var movies = []
 
         results.forEach((movie) => {
+          movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
           // console.log(movie.name)
-          movies.push(<MovieRow movie={movie}/>)
+          movies.push(<MovieRow key={movie.id} movie={movie}/>)
         });
         this.setState({movieList: movies})
       },
@@ -72,8 +73,9 @@ class App extends Component {
         var movies = []
 
         results.forEach((movie) => {
+          movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
           // console.log(movie.name)
-          movies.push(<MovieRow movie={movie}/>)
+          movies.push(<MovieRow key={movie.id} movie={movie}/>)
         });
         this.setState({movieList: movies})
       },
@@ -102,8 +104,9 @@ class App extends Component {
         var movies = []
 
         results.forEach((movie) => {
+          movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
           // console.log(movie.name)
-          movies.push(<MovieRow movie={movie}/>)
+          movies.push(<MovieRow key={movie.id} movie={movie}/>)
         });
         this.setState({movieList: movies})
       },
@@ -131,8 +134,9 @@ class App extends Component {
         var movies = []
 
         results.forEach((movie) => {
+          movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
           // console.log(movie.name)
-          movies.push(<TvRow movie={movie}/>)
+          movies.push(<TvRow key={movie.id} movie={movie}/>)
         });
         this.setState({movieList: movies})
       },
@@ -160,8 +164,9 @@ class App extends Component {
         var movies = []
 
         results.forEach((movie) => {
+          movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
           // console.log(movie.name)
-          movies.push(<PeopleRow movie={movie}/>)
+          movies.push(<PeopleRow key={movie.id} movie={movie}/>)
         });
         this.setState({movieList: movies})
       },
@@ -201,6 +206,7 @@ class App extends Component {
         var movies = []
 
         results.forEach((movie) => {
+          movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.profile_path
           // console.log(movie.name)
           if (movie.name == null) {
             console.log(movie.id)

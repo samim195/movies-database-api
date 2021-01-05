@@ -28,6 +28,11 @@ class ActorRow extends React.Component {
             <div>
             <p><b>Summary</b>: {this.props.movies.overview}</p>
             </div>
+
+            <div>
+            <img src={this.props.movies.poster_src} alt="prof pic" width="250" height="250"/>
+            </div>
+
             <div id={this.props.movies.id}>
                 <p><b>original_language</b>: {this.props.movies.original_language}</p>
                 <p><b>Release Date </b> {this.props.movies.release_date}/10</p>

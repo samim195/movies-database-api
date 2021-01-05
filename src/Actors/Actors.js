@@ -22,11 +22,12 @@ class Actors extends Component {
                 // console.log(results.known_for_department)
                 var moviesArray = []
                 results.forEach((actor)=> {
-                    let moviesActor = actor.known_for;
-                    moviesActor.forEach((movies) => {
+                        let moviesActor = actor.known_for;
+                        moviesActor.forEach((movies) => {
+                        movies.poster_src = "https://image.tmdb.org/t/p/w185" + movies.poster_path
                         console.log(movies)
                         moviesArray.push(movies[0])
-                        moviesArray.push(<ActorRow movies={movies}/>)
+                        moviesArray.push(<ActorRow key={movies.id} movies={movies}/>)
                     })
                     this.setState({movieList: moviesArray})
                 })
