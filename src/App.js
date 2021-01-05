@@ -231,16 +231,18 @@ class App extends Component {
   
   render() {
     return (
-        <div>
-          <Route path='/Home'>
+        <div className='parentDiv'>
+          <Route exact path={['/Home', '/']}>
             <header>
             <form onSubmit={this.searchButtonEnter} >
             <input className='Search' id='searchBox' type="text" placeholder="Search.." ref={input => this.search = input} onChange={this.handleInputChange}/>
             </form>
-            <button onClick={this.searchButton} type="submit">Search All</button>
-            <button onClick={this.searchButtonMovies} type="submit">Movies</button>
-            <button onClick={this.searchButtonPeople} type="submit">People</button>
-            <button onClick={this.searchButtonTvShows} type="submit">TV Shows</button>
+            <div className='childDiv'>
+            <button className='homeButtons' onClick={this.searchButton} type="submit">Search All</button>
+            <button className='homeButtons' onClick={this.searchButtonMovies} type="submit">Movies</button>
+            <button className='homeButtons' onClick={this.searchButtonPeople} type="submit">People</button>
+            <button className='homeButtons' onClick={this.searchButtonTvShows} type="submit">TV Shows</button>
+            </div>
             </header>
             {
               this.state.suggestedNames.map(match => {

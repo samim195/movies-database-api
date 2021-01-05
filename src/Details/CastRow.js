@@ -8,7 +8,9 @@ class CastRow extends React.Component {
         this.state = {showDiv: false}
     }
     render() {
-        return <table key={this.props.cast.id}>
+        return (
+            <div className="tableWidth">
+        <table key={this.props.cast.id}>
         <tbody>
         <tr>
         <td>
@@ -40,6 +42,8 @@ class CastRow extends React.Component {
         </tr>
         </tbody>
         </table>
+        </div> 
+        )
     }
     // moreInfo() {
     //     var hideElem = document.getElementById(this.props.cast.id)

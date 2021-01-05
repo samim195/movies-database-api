@@ -8,7 +8,7 @@ class MovieRow extends React.Component {
         this.state = {showDiv: false}
     }
     render() {
-        return <table key={this.props.movie.id}>
+        return <table className="tableWidth" key={this.props.movie.id}>
         <tbody>
         <tr>
         <td>
