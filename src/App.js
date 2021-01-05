@@ -4,6 +4,7 @@ import $ from 'jquery';
 import { React, Component } from 'react';
 import MovieRow from './MovieRow';
 import Details from './Details.js';
+import Actors from './Actors';
 import { Route, Switch } from 'react-router-dom';
 
 
@@ -85,6 +86,7 @@ class App extends Component {
             {this.state.movieList}
           </Route>
           <Route path='/Details' component={Details}/>
+          <Route path='/Actors' component={Actors}/>
         </div>
     );
   }

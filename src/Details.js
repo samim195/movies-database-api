@@ -10,7 +10,10 @@ class Details extends Component {
         this.state = {castList: []}
     }
     componentDidMount = () => {
-        const url = 'https://api.themoviedb.org/3/movie/550/credits?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US'
+        console.log("---------------------------")
+        console.log(this.props.location.id)
+        const id = this.props.location.id
+        const url = 'https://api.themoviedb.org/3/movie/' + id + '/credits?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US'
         $.ajax ({
         url: url,
         success: (searchResults) => {

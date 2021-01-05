@@ -1,6 +1,6 @@
 import React from 'react';
 import './MovieRow.css';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 class MovieRow extends React.Component {
     constructor(props) {
@@ -16,7 +16,14 @@ class MovieRow extends React.Component {
         </td>
         <td>
             <button  onClick={() => this.moreInfo(this.props.movie.id)}><h3>Title: {this.props.movie.title}</h3></button>
-            <button onClick={() => this.detailsPage(this.props.movie.id)}><h3>Click for more details</h3></button>
+            <Link
+                to={{
+                    pathname: "/Details",
+                    id: this.props.movie.id // your data array of objects
+                }}
+                >
+                <button type='button'>Details Page</button>
+                </Link>
             <div>
             <p><b>Summary</b>: {this.props.movie.overview}</p>
             </div>
@@ -40,9 +47,6 @@ class MovieRow extends React.Component {
             // hideElem.style.display = 'none';
             this.setState({showDiv: false})
         }
-    }
-    detailsPage() {
-        this.props.history.push("/Details");
     }
 }
 
