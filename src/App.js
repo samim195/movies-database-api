@@ -5,6 +5,7 @@ import { React, Component } from 'react';
 import MovieRow from './MovieRow';
 import Details from './Details.js';
 import Actors from './Actors';
+import ShowsDetailPage from './showsDetailPage/ShowsDetailPage'
 import { Route, Switch } from 'react-router-dom';
 
 
@@ -87,6 +88,7 @@ class App extends Component {
           </Route>
           <Route path='/Details' component={Details}/>
           <Route path='/Actors' component={Actors}/>
+          <Route path='/ShowsDetail' component={ShowsDetailPage}/>
         </div>
     );
   }

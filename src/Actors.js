@@ -12,7 +12,7 @@ class Actors extends Component {
     componentDidMount = () => {
         console.log(this.props.location.id)
         const name = this.props.location.id;
-        var url = 'https://api.themoviedb.org/3/search/person?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&query=Angelina%20jolie&page=1&include_adult=false';
+        var url = 'https://api.themoviedb.org/3/search/person?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&query='+name+'&page=1&include_adult=false';
         $.ajax ({
             url: url,
             success: (searchResults) => {
