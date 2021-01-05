@@ -37,6 +37,7 @@ class Details extends Component {
     render() {
         return (
             <div>
+            <h1>Details Page</h1>
                 {this.state.castList}
             </div>
         )
