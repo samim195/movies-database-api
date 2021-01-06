@@ -18,13 +18,14 @@ class PeopleRow extends React.Component {
             <button  onClick={() => this.moreInfo(this.props.movie.id)}><h3>Title: {this.props.movie.name}</h3></button>
             <Link
                 to={{
-                    pathname: "/Details",
-                    id: this.props.movie.id // your data array of objects
+                    pathname: "/Actors",
+                    id: this.props.movie.name // your data array of objects
                 }}
                 >
-                <button type='button'>Details Page</button>
+                <button type='button'>Actors Page</button>
                 </Link>
             <div>
+                <img src={this.props.movie.poster_src} alt="prof pic" width="400" height="400"/>
             </div>
             <div style={{display: this.state.showDiv ? 'block' : 'none'}} id={this.props.movie.id}>
                 <p><b>Popularity</b>: {this.props.movie.popularity}</p>

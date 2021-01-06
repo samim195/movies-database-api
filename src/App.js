@@ -16,7 +16,6 @@ var Select = require('react-select');
 class App extends Component {
   constructor(props) {
     super(props);
-    console.log("initializer")
 
     this.state = {
       movieList: [],
@@ -26,156 +25,239 @@ class App extends Component {
   }
 
   searchButton = () => {
+    var category = $('select.category').val();
+    console.log(category)
     // console.log("heloooooo")
     // var query = 'elite'
     var query = $('#searchBox').val()
     console.log(query)
     // const url = "https://api.themoviedb.org/3/search/movie?api_key=21d7e7d170fcdc61c66d3c6d8d994196&query=" + query + "&page=1";
-    const url = "https://api.themoviedb.org/3/search/multi?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&query=" + query + "&page=1&include_adult=false"
+    if (category == 'all') {
+      console.log("seachring for everything")
+      const url = "https://api.themoviedb.org/3/search/multi?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&query=" + query + "&page=1&include_adult=false"
+      $.ajax({
+        url: url,
+        success: (searchResults) => {
+          console.log("Fetched data successfullu")
+          console.log(searchResults['results'])
+          const results = searchResults['results']
 
-    $.ajax({
-      url: url,
-      success: (searchResults) => {
-        console.log("Fetched data successfullu")
-        console.log(searchResults['results'])
-        const results = searchResults['results']
+          var movies = []
 
-        var movies = []
-
-        results.forEach((movie) => {
-          movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
-          // console.log(movie.name)
-          movies.push(<MovieRow key={movie.id} movie={movie}/>)
-        });
-        this.setState({movieList: movies})
-      },
-      error: (xhr, status, err) => {
-        console.error("Failed to fetch data")
+          results.forEach((movie) => {
+            movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
+            // console.log(movie.name)
+            movies.push(<MovieRow key={movie.id} movie={movie}/>)
+          });
+          this.setState({movieList: movies})
+        },
+        error: (xhr, status, err) => {
+          console.error("Failed to fetch data")
+        }
+      })
+    } else if (category == 'movies') {
+      console.log("seachring movies")
+        const url = "https://api.themoviedb.org/3/search/movie?api_key=21d7e7d170fcdc61c66d3c6d8d994196&query=" + query + "&page=1";    
+        $.ajax({
+          url: url,
+          success: (searchResults) => {
+            console.log("Fetched data successfullu")
+            console.log(searchResults['results'])
+            const results = searchResults['results']
+    
+            var movies = []
+    
+            results.forEach((movie) => {
+              movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
+              // console.log(movie.name)
+              movies.push(<MovieRow key={movie.id} movie={movie}/>)
+            });
+            this.setState({movieList: movies})
+          },
+          error: (xhr, status, err) => {
+            console.error("Failed to fetch data")
+          }
+          
+        })
+      } else if (category == 'people') {
+        console.log("seaching people")
+        var inputValue = query.split(" ")
+        var newQuery = ''
+        for (let i=0; i<inputValue.length; i++) {
+          newQuery += inputValue[i]
+          if (i != inputValue.length) { 
+            newQuery += '%20'
+          }
+        }
+        console.log(inputValue)
+        console.log(inputValue)
+        const url = 'https://api.themoviedb.org/3/search/person?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&query='+newQuery+'&page=1&include_adult=false'
+        console.log(url)
+        // const url = "https://api.themoviedb.org/3/search/movie?api_key=21d7e7d170fcdc61c66d3c6d8d994196&query=" + query + "&page=1";
+        $.ajax({
+          url: url,
+          success: (searchResults) => {
+            console.log("Fetched data successfullu")
+            console.log(searchResults['results'])
+            const results = searchResults['results']
+    
+            var movies = []
+    
+            results.forEach((movie) => {
+              console.log(movie.profile_path)
+              movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.profile_path
+              // console.log(movie.name)
+              movies.push(<PeopleRow key={movie.id} movie={movie}/>)
+            });
+            this.setState({movieList: movies})
+          },
+          error: (xhr, status, err) => {
+            console.error("Failed to fetch data")
+          }
+          
+        })
+      } else if (category == 'tv shows') {
+        const url = 'https://api.themoviedb.org/3/search/tv?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&page=1&query='+query+'&include_adult=false';
+        console.log("seachring tv shows")
+        $.ajax({
+          url: url,
+          success: (searchResults) => {
+            console.log("Fetched data successfullu")
+            console.log(searchResults['results'])
+            const results = searchResults['results']
+    
+            var movies = []
+    
+            results.forEach((movie) => {
+              movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
+              // console.log(movie.name)
+              movies.push(<TvRow key={movie.id} movie={movie}/>)
+            });
+            this.setState({movieList: movies})
+          },
+          error: (xhr, status, err) => {
+            console.error("Failed to fetch data")
+          }
+          
+        })
       }
-      
-    })
   }
   searchButtonEnter = (e) => {
+    e.preventDefault();
+    var category = $('select.category').val();
+    console.log(category)
     // console.log("heloooooo")
     // var query = 'elite'
-    e.preventDefault();
     var query = $('#searchBox').val()
     console.log(query)
     // const url = "https://api.themoviedb.org/3/search/movie?api_key=21d7e7d170fcdc61c66d3c6d8d994196&query=" + query + "&page=1";
     const url = "https://api.themoviedb.org/3/search/multi?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&query=" + query + "&page=1&include_adult=false"
-    $.ajax({
-      url: url,
-      success: (searchResults) => {
-        console.log("Fetched data successfullu")
-        console.log(searchResults['results'])
-        const results = searchResults['results']
 
-        var movies = []
+    if (category == 'all') {
+      $.ajax({
+        url: url,
+        success: (searchResults) => {
+          console.log("Fetched data successfullu")
+          console.log(searchResults['results'])
+          const results = searchResults['results']
 
-        results.forEach((movie) => {
-          movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
-          // console.log(movie.name)
-          movies.push(<MovieRow key={movie.id} movie={movie}/>)
-        });
-        this.setState({movieList: movies})
-      },
-      error: (xhr, status, err) => {
-        console.error("Failed to fetch data")
+          var movies = []
+
+          results.forEach((movie) => {
+            movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
+            // console.log(movie.name)
+            movies.push(<MovieRow key={movie.id} movie={movie}/>)
+          });
+          this.setState({movieList: movies})
+        },
+        error: (xhr, status, err) => {
+          console.error("Failed to fetch data")
+        }
+      })
+    } else if (category == 'movies') {
+        const url = "https://api.themoviedb.org/3/search/movie?api_key=21d7e7d170fcdc61c66d3c6d8d994196&query=" + query + "&page=1";    
+        $.ajax({
+          url: url,
+          success: (searchResults) => {
+            console.log("Fetched data successfullu")
+            console.log(searchResults['results'])
+            const results = searchResults['results']
+    
+            var movies = []
+    
+            results.forEach((movie) => {
+              movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
+              // console.log(movie.name)
+              movies.push(<MovieRow key={movie.id} movie={movie}/>)
+            });
+            this.setState({movieList: movies})
+          },
+          error: (xhr, status, err) => {
+            console.error("Failed to fetch data")
+          }
+          
+        })
+      } else if (category == 'people') {
+        console.log("searching people")
+        var inputValue = query.split(" ")
+        var newQuery = ''
+        for (let i=0; i<inputValue.length; i++) {
+          newQuery += inputValue[i]
+          if (i != inputValue.length - 1) { 
+            newQuery += '%20'
+          }
+        }
+        console.log(inputValue)
+        console.log(inputValue)
+        const url = 'https://api.themoviedb.org/3/search/person?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&query='+newQuery+'&page=1&include_adult=false'
+        console.log(url)
+        $.ajax({
+          url: url,
+          success: (searchResults) => {
+            console.log("Fetched data successfullu")
+            console.log(searchResults['results'])
+            const results = searchResults['results']
+    
+            var movies = []
+    
+            results.forEach((movie) => {
+              movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
+              // console.log(movie.name)
+              movies.push(<PeopleRow key={movie.id} movie={movie}/>)
+            });
+            this.setState({movieList: movies})
+          },
+          error: (xhr, status, err) => {
+            console.error("Failed to fetch data")
+          }
+          
+        })
+      } else if (category == 'tv shows') {
+        const url = 'https://api.themoviedb.org/3/search/tv?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&page=1&query='+query+'&include_adult=false';
+        $.ajax({
+          url: url,
+          success: (searchResults) => {
+            console.log("Fetched data successfullu")
+            console.log(searchResults['results'])
+            const results = searchResults['results']
+    
+            var movies = []
+    
+            results.forEach((movie) => {
+              movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
+              // console.log(movie.name)
+              movies.push(<TvRow key={movie.id} movie={movie}/>)
+            });
+            this.setState({movieList: movies})
+          },
+          error: (xhr, status, err) => {
+            console.error("Failed to fetch data")
+          }
+          
+        })
       }
-      
-    })
   }
 
-  searchButtonMovies = () => {
-    // console.log("heloooooo")
-    // var query = 'elite'
-    var query = $('#searchBox').val()
-    console.log(query)
-    const url = "https://api.themoviedb.org/3/search/movie?api_key=21d7e7d170fcdc61c66d3c6d8d994196&query=" + query + "&page=1";
-    // const url = "https://api.themoviedb.org/3/search/multi?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&query=" + query + "&page=1&include_adult=false"
-
-    $.ajax({
-      url: url,
-      success: (searchResults) => {
-        console.log("Fetched data successfullu")
-        console.log(searchResults['results'])
-        const results = searchResults['results']
-
-        var movies = []
-
-        results.forEach((movie) => {
-          movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
-          // console.log(movie.name)
-          movies.push(<MovieRow key={movie.id} movie={movie}/>)
-        });
-        this.setState({movieList: movies})
-      },
-      error: (xhr, status, err) => {
-        console.error("Failed to fetch data")
-      }
-      
-    })
-  }
-
-  searchButtonTvShows = () => {
-    // console.log("heloooooo")
-    // var query = 'elite'
-    var query = $('#searchBox').val()
-    console.log(query)
-    // const url = "https://api.themoviedb.org/3/search/movie?api_key=21d7e7d170fcdc61c66d3c6d8d994196&query=" + query + "&page=1";
-    const url = 'https://api.themoviedb.org/3/search/tv?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&page=1&query='+query+'&include_adult=false';
-    $.ajax({
-      url: url,
-      success: (searchResults) => {
-        console.log("Fetched data successfullu")
-        console.log(searchResults['results'])
-        const results = searchResults['results']
-
-        var movies = []
-
-        results.forEach((movie) => {
-          movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
-          // console.log(movie.name)
-          movies.push(<TvRow key={movie.id} movie={movie}/>)
-        });
-        this.setState({movieList: movies})
-      },
-      error: (xhr, status, err) => {
-        console.error("Failed to fetch data")
-      }
-      
-    })
-  }
-
-  searchButtonPeople = () => {
-    // console.log("heloooooo")
-    // var query = 'elite'
-    var query = $('#searchBox').val()
-    console.log(query)
-    const url = 'https://api.themoviedb.org/3/search/person?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&query='+query+'&page=1&include_adult=false'
-    // const url = "https://api.themoviedb.org/3/search/movie?api_key=21d7e7d170fcdc61c66d3c6d8d994196&query=" + query + "&page=1";
-    $.ajax({
-      url: url,
-      success: (searchResults) => {
-        console.log("Fetched data successfullu")
-        console.log(searchResults['results'])
-        const results = searchResults['results']
-
-        var movies = []
-
-        results.forEach((movie) => {
-          movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
-          // console.log(movie.name)
-          movies.push(<PeopleRow key={movie.id} movie={movie}/>)
-        });
-        this.setState({movieList: movies})
-      },
-      error: (xhr, status, err) => {
-        console.error("Failed to fetch data")
-      }
-      
-    })
-  }
 
   handleInputChange = (event) => {
     event.preventDefault();
@@ -193,6 +275,7 @@ class App extends Component {
     // var query = 'elite'
     var query = $('#searchBox').val()
     console.log(query)
+    
     // const url = "https://api.themoviedb.org/3/search/movie?api_key=21d7e7d170fcdc61c66d3c6d8d994196&query=" + query + "&page=1";
     const url = "https://api.themoviedb.org/3/search/multi?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&query=" + query + "&page=1&include_adult=false"
 
@@ -231,41 +314,53 @@ class App extends Component {
   
   render() {
     return (
-        <div className='parentDiv'>
+        <div className=''>
+        <div className='row'></div>
           <Route exact path={['/Home', '/']}>
             <header>
+            <div className='column'>
             <form onSubmit={this.searchButtonEnter} >
             <input className='Search' id='searchBox' type="text" placeholder="Search.." ref={input => this.search = input} onChange={this.handleInputChange}/>
             </form>
-            <div className='childDiv'>
-            <button className='homeButtons' onClick={this.searchButton} type="submit">Search All</button>
-            <button className='homeButtons' onClick={this.searchButtonMovies} type="submit">Movies</button>
-            <button className='homeButtons' onClick={this.searchButtonPeople} type="submit">People</button>
-            <button className='homeButtons' onClick={this.searchButtonTvShows} type="submit">TV Shows</button>
+            <div className='row'>
+            <button className='homeButtons' onClick={this.searchButton} type="submit">Search</button>
+            <select className="category">
+            <option value="all">All</option>
+            <option value="movies"> Movies</option>
+            <option value="people"> People</option>
+            <option value="tv Shows"> TV Shows</option>
+          </select>
+          </div>
+          <div className="column">
+          {
+            this.state.suggestedNames.map(match => {
+              return (
+                <div className="Matches">
+                <Link
+                to={{
+                    pathname: "/Details",
+                    id: match.id // your data array of objects
+                }}
+                >
+                <button type='button'>{match.name}</button>
+                </Link>
+                </div>
+                )
+            })
+          }
+          </div>
             </div>
             </header>
-            {
-              this.state.suggestedNames.map(match => {
-                return (
-                  <div className="Matches">
-                  <Link
-                  to={{
-                      pathname: "/Details",
-                      id: match.id // your data array of objects
-                  }}
-                  >
-                  <button type='button'>{match.name}</button>
-                  </Link>
-                  </div>
-                  )
-              })
-            }
-            {this.state.movieList}
+            <div className='column'>
+              {this.state.movieList}
+            </div>
+            
           </Route>
           <Route path='/Details' component={Details}/>
           <Route path='/Actors' component={Actors}/>
           <Route path='/ShowsDetail' component={ShowsDetailPage}/>
         </div>
+        
     );
   }
 }
