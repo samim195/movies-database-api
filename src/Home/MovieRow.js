@@ -15,14 +15,14 @@ class MovieRow extends React.Component {
         
         </td>
         <td>
-            <button  onClick={() => this.moreInfo(this.props.movie.id)}><h3>Title: {this.props.movie.title}</h3></button>
+            <button  onClick={() => this.moreInfo(this.props.movie.id)}><h4>Title: {this.props.movie.title}</h4></button>
             <Link
                 to={{
                     pathname: "/Details",
                     id: this.props.movie.id // your data array of objects
                 }}
                 >
-                <button type='button'>Details Page</button>
+                <button type='button'><h4>Details Page</h4></button>
                 </Link>
             <div>
             <p><b>Summary</b>: {this.props.movie.overview}</p>
