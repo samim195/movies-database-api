@@ -322,7 +322,7 @@ class App extends Component {
             <form onSubmit={this.searchButtonEnter} >
             <input className='Search' id='searchBox' type="text" placeholder="Search.." ref={input => this.search = input} onChange={this.handleInputChange}/>
             </form>
-            <div className='row'>
+            <div className=''>
             <button className='homeButtons' onClick={this.searchButton} type="submit">Search</button>
             <select className="category">
             <option value="all">All</option>
