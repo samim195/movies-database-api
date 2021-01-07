@@ -1,7 +1,7 @@
 import './App.css';
 import './Form.css'
 import $ from 'jquery';
-import { React, Component, useState } from 'react';
+import { React, Component, useState, useEffect } from 'react';
 import MovieRow from './Home/MovieRow';
 import PeopleRow from './Home/PeopleRow'
 import TvRow from './Home/TvRow'
@@ -16,6 +16,15 @@ const App = () => {
   const [movieList, setMovieList] = useState([])
   const [queryInput, setQuery] = useState('')
   const [suggestedNames, setNames] = useState([])
+
+  useEffect(() => {
+    console.log("Hello")
+    if(queryInput.length >= 4) {
+      checkInput()
+      // console.log(queryInput)
+      // console.log(queryInput.length)
+    }
+  }, [queryInput]);
 
 
 // class App extends Component {
@@ -278,18 +287,13 @@ const App = () => {
     // console.log(value);
     // this.setState({query: value})
     setQuery(value)
-    if(queryInput.length >= 4) {
-      checkInput()
-      console.log(queryInput)
-      console.log(queryInput.length)
-    }
   }
 
   function checkInput () {
     // console.log("heloooooo")
     // var query = 'elite'
     var query = $('#searchBox').val()
-    console.log(query)
+    // console.log(query)
     
     // const url = "https://api.themoviedb.org/3/search/movie?api_key=21d7e7d170fcdc61c66d3c6d8d994196&query=" + query + "&page=1";
     const url = "https://api.themoviedb.org/3/search/multi?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&query=" + query + "&page=1&include_adult=false"
@@ -307,10 +311,10 @@ const App = () => {
           movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.profile_path
           // console.log(movie.name)
           if (movie.name == null) {
-            console.log(movie.id)
+            // console.log(movie.id)
             movie.name = movie.title
             // movies.push(movie.title)
-            console.log(movie.name)
+            // console.log(movie.name)
           }
           // } else {
           //   movies.push(movie.name)
@@ -366,9 +370,14 @@ const App = () => {
           </div>
             </div>
             </header>
+            {movieList ? (
             <div className='column'>
               {movieList}
             </div>
+            ) : (
+              <p>No suggestions found</p>
+            )
+            }
             
           </Route>
           <Route path='/Details' component={Details}/>
