@@ -1,7 +1,7 @@
 import './App.css';
 import './Form.css'
 import $ from 'jquery';
-import { React, Component } from 'react';
+import { React, Component, useState } from 'react';
 import MovieRow from './Home/MovieRow';
 import PeopleRow from './Home/PeopleRow'
 import TvRow from './Home/TvRow'
@@ -12,19 +12,24 @@ import { Route, Switch, Link } from 'react-router-dom';
 // import './dropdown.css'
 var Select = require('react-select');
 
+const App = () => {
+  const [movieList, setMovieList] = useState([])
+  const [queryInput, setQuery] = useState('')
+  const [suggestedNames, setNames] = useState([])
 
-class App extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      movieList: [],
-      query: '',
-      suggestedNames: []
-    }
-  }
+// class App extends Component {
+//   constructor(props) {
+//     super(props);
 
-  searchButton = () => {
+//     this.state = {
+//       movieList: [],
+//       query: '',
+//       suggestedNames: []
+//     }
+//   }
+
+  function searchButton() {
     var category = $('select.category').val();
     console.log(category)
     // console.log("heloooooo")
@@ -49,7 +54,8 @@ class App extends Component {
             // console.log(movie.name)
             movies.push(<MovieRow key={movie.id} movie={movie}/>)
           });
-          this.setState({movieList: movies})
+          // this.setState({movieList: movies})
+          setMovieList(movies)
         },
         error: (xhr, status, err) => {
           console.error("Failed to fetch data")
@@ -72,7 +78,8 @@ class App extends Component {
               // console.log(movie.name)
               movies.push(<MovieRow key={movie.id} movie={movie}/>)
             });
-            this.setState({movieList: movies})
+            // this.setState({movieList: movies})
+            setMovieList(movies)
           },
           error: (xhr, status, err) => {
             console.error("Failed to fetch data")
@@ -109,7 +116,8 @@ class App extends Component {
               // console.log(movie.name)
               movies.push(<PeopleRow key={movie.id} movie={movie}/>)
             });
-            this.setState({movieList: movies})
+            // this.setState({movieList: movies})
+            setMovieList(movies)
           },
           error: (xhr, status, err) => {
             console.error("Failed to fetch data")
@@ -133,7 +141,8 @@ class App extends Component {
               // console.log(movie.name)
               movies.push(<TvRow key={movie.id} movie={movie}/>)
             });
-            this.setState({movieList: movies})
+            // this.setState({movieList: movies})
+            setMovieList(movies)
           },
           error: (xhr, status, err) => {
             console.error("Failed to fetch data")
@@ -142,7 +151,7 @@ class App extends Component {
         })
       }
   }
-  searchButtonEnter = (e) => {
+  function searchButtonEnter(e){
     e.preventDefault();
     var category = $('select.category').val();
     console.log(category)
@@ -168,7 +177,8 @@ class App extends Component {
             // console.log(movie.name)
             movies.push(<MovieRow key={movie.id} movie={movie}/>)
           });
-          this.setState({movieList: movies})
+          // this.setState({movieList: movies})
+          setMovieList(movies)
         },
         error: (xhr, status, err) => {
           console.error("Failed to fetch data")
@@ -190,7 +200,8 @@ class App extends Component {
               // console.log(movie.name)
               movies.push(<MovieRow key={movie.id} movie={movie}/>)
             });
-            this.setState({movieList: movies})
+            // this.setState({movieList: movies})
+            setMovieList(movies)
           },
           error: (xhr, status, err) => {
             console.error("Failed to fetch data")
@@ -225,7 +236,8 @@ class App extends Component {
               // console.log(movie.name)
               movies.push(<PeopleRow key={movie.id} movie={movie}/>)
             });
-            this.setState({movieList: movies})
+            // this.setState({movieList: movies})
+            setMovieList(movies)
           },
           error: (xhr, status, err) => {
             console.error("Failed to fetch data")
@@ -248,7 +260,8 @@ class App extends Component {
               // console.log(movie.name)
               movies.push(<TvRow key={movie.id} movie={movie}/>)
             });
-            this.setState({movieList: movies})
+            // this.setState({movieList: movies})
+            setMovieList(movies)
           },
           error: (xhr, status, err) => {
             console.error("Failed to fetch data")
@@ -259,18 +272,20 @@ class App extends Component {
   }
 
 
-  handleInputChange = (event) => {
+  function handleInputChange(event) {
     event.preventDefault();
     var value = event.target.value;
-    console.log(value)
-    this.setState({query: value})
-    if(this.state.query.length >= 4) {
-      this.checkInput()
-      console.log(this.state.query)
+    // console.log(value);
+    // this.setState({query: value})
+    setQuery(value)
+    if(queryInput.length >= 4) {
+      checkInput()
+      console.log(queryInput)
+      console.log(queryInput.length)
     }
   }
 
-  checkInput = () => {
+  function checkInput () {
     // console.log("heloooooo")
     // var query = 'elite'
     var query = $('#searchBox').val()
@@ -303,7 +318,8 @@ class App extends Component {
           // // }
           movies.push(movie)
         });
-        this.setState({suggestedNames: movies})
+        // this.setState({suggestedNames: movies})
+        setNames(movies)
       },
       error: (xhr, status, err) => {
         console.error("Failed to fetch data")
@@ -312,18 +328,17 @@ class App extends Component {
     })
   }
   
-  render() {
     return (
         <div className=''>
         <div className='row'></div>
           <Route exact path={['/Home', '/']}>
             <header>
             <div className='column'>
-            <form onSubmit={this.searchButtonEnter} >
-            <input className='Search' id='searchBox' type="text" placeholder="Search.." ref={input => this.search = input} onChange={this.handleInputChange}/>
+            <form onSubmit={searchButtonEnter} >
+            <input className='Search' id='searchBox' type="text" placeholder="Search.."  onChange={handleInputChange}/>
             </form>
             <div className=''>
-            <button className='homeButtons' onClick={this.searchButton} type="submit">Search</button>
+            <button className='homeButtons' onClick={searchButton} type="submit">Search</button>
             <select className="category">
             <option value="all">All</option>
             <option value="movies"> Movies</option>
@@ -333,7 +348,7 @@ class App extends Component {
           </div>
           <div className="column">
           {
-            this.state.suggestedNames.map(match => {
+            suggestedNames.map(match => {
               return (
                 <div className="Matches">
                 <Link
@@ -352,7 +367,7 @@ class App extends Component {
             </div>
             </header>
             <div className='column'>
-              {this.state.movieList}
+              {movieList}
             </div>
             
           </Route>
@@ -362,7 +377,6 @@ class App extends Component {
         </div>
         
     );
-  }
 }
 
 export default App;
