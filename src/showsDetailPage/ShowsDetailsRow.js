@@ -1,6 +1,6 @@
 import React from 'react';
 import '../Home/MovieRow.css';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class ShowsDetailsRow extends React.Component {
     constructor(props) {

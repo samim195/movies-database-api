@@ -1,16 +1,15 @@
 import './App.css';
 import './Form.css'
 import $ from 'jquery';
-import { React, Component, useState, useEffect } from 'react';
+import { React, useState, useEffect } from 'react';
 import MovieRow from './Home/MovieRow';
 import PeopleRow from './Home/PeopleRow'
 import TvRow from './Home/TvRow'
 import Details from './Details/Details';
 import Actors from './Actors/Actors';
 import ShowsDetailPage from './showsDetailPage/ShowsDetailPage'
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 // import './dropdown.css'
-var Select = require('react-select');
 
 const App = () => {
   const [movieList, setMovieList] = useState([])
@@ -334,16 +333,15 @@ const App = () => {
   
     return (
         <div className=''>
-        <div className='row'></div>
           <Route exact path={['/Home', '/']}>
             <header>
-            <div className='column'>
+            <div className='column form-group'>
             <form onSubmit={searchButtonEnter} >
-            <input className='Search' id='searchBox' type="text" placeholder="Search.."  onChange={handleInputChange}/>
+            <input className='form-control' id='searchBox' type="text" placeholder="Search.."  onChange={handleInputChange}/>
             </form>
-            <div className=''>
-            <button className='homeButtons' onClick={searchButton} type="submit">Search</button>
-            <select className="category">
+            <div className='dropdown'>
+            <button className='homeButtons btn btn-primary' id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={searchButton} type="submit">Search</button>
+            <select className="category btn btn-secondary dropdown-toggle" aria-labelledby="dropdownMenuButton">
             <option value="all">All</option>
             <option value="movies"> Movies</option>
             <option value="people"> People</option>
@@ -367,6 +365,7 @@ const App = () => {
                 )
             })
           }
+          
           </div>
             </div>
             </header>

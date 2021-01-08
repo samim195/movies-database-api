@@ -15,6 +15,7 @@ class MovieRow extends React.Component {
         
         </td>
         <td>
+        <div className='column3'></div>
             <button  onClick={() => this.moreInfo(this.props.movie.id)}><h4>Title: {this.props.movie.title}</h4></button>
             <Link
                 to={{

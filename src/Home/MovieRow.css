@@ -4,5 +4,15 @@
 
 .tableWidth {
     min-width:100%; 
-    max-width:800px
+    max-width:800px;
+    float: left;
+
 }
+
+.column3 {
+    float: right;
+    padding: 10px;
+    height: 100px; /* Should be removed. Only for demonstration */
+    margin-right: 100px;
+    
+  }

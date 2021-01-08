@@ -1,8 +1,6 @@
-import Link from 'react-router-dom';
 import { React, Component } from 'react';
 import $ from 'jquery';
 import ShowsDetailsRow from './ShowsDetailsRow';
-import { withRouter } from 'react-router-dom';
 
 class ShowsDetailPage extends Component {
     constructor(props) {
