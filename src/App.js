@@ -348,7 +348,7 @@ const App = () => {
             <option value="tv Shows"> TV Shows</option>
           </select>
           </div>
-          <div className="column">
+          <div className="column LC20lb DKV0Md">
           {
             suggestedNames.map(match => {
               return (

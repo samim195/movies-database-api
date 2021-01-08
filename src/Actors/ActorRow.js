@@ -22,7 +22,7 @@ class ActorRow extends React.Component {
                 id: this.props.movies.id // your data array of objects
             }}
             >
-            <button type='button'>Actors Page</button>
+            <button type='button'>movie/show Page</button>
             </Link>
 
             <div>

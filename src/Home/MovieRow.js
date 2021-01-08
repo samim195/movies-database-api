@@ -8,16 +8,14 @@ class MovieRow extends React.Component {
         this.state = {showDiv: false}
     }
     render() {
-        return <table className="tableWidth" key={this.props.movie.id}>
-        <tbody>
-        <tr>
-        <td>
-        
-        </td>
-        <td>
-        <div className='column3'></div>
-            <button  onClick={() => this.moreInfo(this.props.movie.id)}><h4>Title: {this.props.movie.title}</h4></button>
-            <Link
+
+        return (
+            <div class="card">
+            
+                <img className="card-img-top" src={this.props.movie.poster_src} alt="Card image cap" height='500px' width='300px'></img>
+                <button  className='card-title' onClick={() => this.moreInfo(this.props.movie.id)}><h4>Title: {this.props.movie.title}</h4></button>
+
+                <Link
                 to={{
                     pathname: "/Details",
                     id: this.props.movie.id // your data array of objects
@@ -25,22 +23,15 @@ class MovieRow extends React.Component {
                 >
                 <button type='button'><h4>Details Page</h4></button>
                 </Link>
-            <div>
-            <p><b>Summary</b>: {this.props.movie.overview}</p>
+                <p className="card-text"><b>Summary</b>: {this.props.movie.overview}</p>
+                <div style={{display: this.state.showDiv ? 'block' : 'none'}} id={this.props.movie.id}>
+                <p className="card-text"><b>Popularity</b>: {this.props.movie.popularity}</p>
+                <p className="card-text"><b>Release Date</b>: {this.props.movie.release_date}</p>
+                <p className="card-text"><b>Original Title</b>: {this.props.movie.original_title}</p>
+                <p className="card-text"><b>Votes on Average</b> {this.props.movie.vote_average}/10</p>
             </div>
-            <div>
-                <img src={this.props.movie.poster_src} alt="prof pic" width="400" height="400"/>
             </div>
-            <div style={{display: this.state.showDiv ? 'block' : 'none'}} id={this.props.movie.id}>
-                <p><b>Popularity</b>: {this.props.movie.popularity}</p>
-                <p><b>Release Date</b>: {this.props.movie.release_date}</p>
-                <p><b>Original Title</b>: {this.props.movie.original_title}</p>
-                <p><b>Votes on Average</b> {this.props.movie.vote_average}/10</p>
-            </div>
-        </td>
-        </tr>
-        </tbody>
-        </table>
+        )
     }
     moreInfo() {
         var hideElem = document.getElementById(this.props.movie.id)

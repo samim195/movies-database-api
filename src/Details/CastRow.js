@@ -8,41 +8,28 @@ class CastRow extends React.Component {
         this.state = {showDiv: false}
     }
     render() {
+
         return (
-            <div className="tableWidth">
-        <table key={this.props.cast.id}>
-        <tbody>
-        <tr>
-        <td>
-        
-        </td>
-        <td>
-            <h3>Title: {this.props.cast.name}</h3>
-            <Link
-            to={{
-                pathname: "/Actors",
-                id: this.props.cast.name // your data array of objects
-            }}
-            >
-            <button type='button'>Cast Page</button>
-            </Link>
-            <div>
-            <p><b>Summary</b>: {this.props.cast.overview}</p>
-            </div>
-            <div>
-            <img src={this.props.cast.poster_src} alt="prof pic" width="250" height="250"/>
-            </div>
-            <div id={this.props.cast.id}>
+            <div class="card">
+            
+                <img src={this.props.cast.poster_src} alt="Card image cap" height='300' width='25%' border-top-left-radius='calc(.25rem - 1px)' border-top-right-radius='calc(.25rem - 1px)'></img>
+                <h4 className='card-title' >Title: {this.props.cast.name}</h4>
+
+                <Link
+                to={{
+                    pathname: "/Actors",
+                    id: this.props.cast.name // your data array of objects
+                }}
+                >
+                <button type='button'>Cast Page</button>
+                </Link>
+                <div id={this.props.cast.id}>
                 <p><b>Popularity</b>: {this.props.cast.popularity}</p>
                 <p><b>Gender</b>: {this.props.cast.gender}</p>
                 <p><b>Acting</b>: {this.props.cast.known_for_department}</p>
                 <p><b>Profile Path </b> {this.props.cast.profile_path}/10</p>
             </div>
-        </td>
-        </tr>
-        </tbody>
-        </table>
-        </div> 
+            </div>
         )
     }
     // moreInfo() {
