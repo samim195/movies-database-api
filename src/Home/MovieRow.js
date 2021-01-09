@@ -10,22 +10,22 @@ class MovieRow extends React.Component {
     render() {
 
         return (
-            <div class="row">
-            <div class="col-sm-6 ">
-            <div classNAme="card">
-            <h2 className=''>{this.props.movie.title}</h2>
-                <img className="" src={this.props.movie.poster_src} alt="Card image cap"></img>
-                <Link 
+            <div class="row card container-fluid" style={{width: "50rem"}}>
+            <div class="col-sm-7 ">
+                <img className="card-img-top " src={this.props.movie.poster_src} alt="Card image cap"></img>
+                <div className="card-body">
+                <h2 className='card-title'>{this.props.movie.title}</h2>
+
+                <Link className=""
                 to={{
                     pathname: "/Details",
                     id: this.props.movie.id // your data array of objects
                 }}
                 >
-                <button type='button'><h4>Details Page</h4></button>
+                <button className="btn btn-primary" type='button'><h4>Details Page</h4></button>
                 </Link> 
-                <button  className="" onClick={() => this.moreInfo(this.props.movie.id)}><h5 className=''>More Info</h5></button>
-
-                </div>
+                <button  className="btn btn-primary" onClick={() => this.moreInfo(this.props.movie.id)}><h5 className=''>More Info</h5></button>
+                
 
                 <p className="card-text"><b>Summary</b>: {this.props.movie.overview}</p>
                 <div style={{display: this.state.showDiv ? 'block' : 'none'}} id={this.props.movie.id}>
@@ -36,6 +36,8 @@ class MovieRow extends React.Component {
                 </div>
                 </div>
             </div>
+            </div>
+
         )
     }
     moreInfo() {

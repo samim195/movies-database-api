@@ -15,11 +15,13 @@ const App = () => {
   const [movieList, setMovieList] = useState([])
   const [queryInput, setQuery] = useState('')
   const [suggestedNames, setNames] = useState([])
+  const [suggestion, hideSuggestion] = useState(false)
 
   useEffect(() => {
     console.log("Hello")
     if(queryInput.length >= 4) {
       checkInput()
+      hideSuggestion(true)
       // console.log(queryInput)
       // console.log(queryInput.length)
     }
@@ -37,7 +39,10 @@ const App = () => {
 //     }
 //   }
 
+
+
   function searchButton() {
+    hideSuggestion(!suggestion)
     var category = $('select.category').val();
     console.log(category)
     // console.log("heloooooo")
@@ -160,7 +165,9 @@ const App = () => {
       }
   }
   function searchButtonEnter(e){
+
     e.preventDefault();
+    hideSuggestion(!suggestion)
     var category = $('select.category').val();
     console.log(category)
     // console.log("heloooooo")
@@ -288,6 +295,10 @@ const App = () => {
     setQuery(value)
   }
 
+  function hideSugg() {
+    hideSuggestion(!suggestion);
+  }
+
   function checkInput () {
     // console.log("heloooooo")
     // var query = 'elite'
@@ -359,24 +370,25 @@ const App = () => {
                     id: match.id // your data array of objects
                 }}
                 >
-                <button type='button'>{match.name}</button>
+                <button style={{display: suggestion ? 'block' : 'none'}} type='button'>{match.name}</button>
                 </Link>
                 </div>
                 )
             })
           }
-          
-          </div>
-            </div>
-            </header>
-            {movieList ? (
+          {movieList ? (
             <div className='column'>
               {movieList}
             </div>
             ) : (
-              <p>No suggestions found</p>
+              <p>No Movies Found</p>
             )
             }
+          
+          </div>
+            </div>
+            </header>
+
             
           </Route>
           <Route path='/Details' component={Details}/>
