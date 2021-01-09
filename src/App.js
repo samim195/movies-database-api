@@ -53,19 +53,38 @@ const App = () => {
     //     }
     //   }}
     // </Get>
-    const url = "https://api.themoviedb.org/3/trending/all/day?api_key=21d7e7d170fcdc61c66d3c6d8d994196"
-    const res = await axios.get(url)
-    const results = res.data.results;
-    var movies = []
+      var category = $('select.category').val();
+      if (category == 'tv shows') {
+        category = 'tv'
+      } else if (category == 'movies') {
+        category = 'movie'
+      } else {
+        category = 'person'
+      }
+      console.log(category)
+      const url = "https://api.themoviedb.org/3/trending/"+ category + "/day?api_key=21d7e7d170fcdc61c66d3c6d8d994196"
+      const res = await axios.get(url)
+      const results = res.data.results;
+      console.log(url)
+      console.log(results)
+      var movies = []
 
-    results.forEach((movie) => {
-      movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
-      // console.log(movie.name)
-      movies.push(<MovieRow key={movie.id} movie={movie}/>)
-    });
-    // this.setState({movieList: movies})
+      if (category == 'person') {
+        results.forEach((movie) => {
+          console.log(movie.profile_path)
+          movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.profile_path
+          // console.log(movie.name)
+          movies.push(<PeopleRow key={movie.id} movie={movie}/>)
+        });
+      } else {
+      results.forEach((movie) => {
+        movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
+        // console.log(movie.name)
+        movies.push(<MovieRow key={movie.id} movie={movie}/>)
+      });
+      // this.setState({movieList: movies})
+    }
     setMovieList(movies)
-
   }
 
   function searchButton() {
@@ -384,7 +403,7 @@ const App = () => {
             <option value="all">All</option>
             <option value="movies"> Movies</option>
             <option value="people"> People</option>
-            <option value="tv Shows"> TV Shows</option>
+            <option value="tv shows"> TV Shows</option>
           </select>
           </div>
           <div className="container-fluid">

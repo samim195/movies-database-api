@@ -10,8 +10,8 @@ class ActorRow extends React.Component {
     render() {
 
         return (
-            <div class="container-fluid" style={{width: "50rem"}}>
-            <div class="col-sm-7 ">
+            <div className="container-fluid" style={{width: "50rem"}}>
+            <div className="col-sm-7 ">
                 <img className="card-img-top " src={this.props.movies.poster_src} alt="Card image cap"></img>
                 <div className="card-body">
                 <h2 className='card-title'>{this.props.movies.original_title}</h2>
@@ -24,7 +24,6 @@ class ActorRow extends React.Component {
                 >
                 <button className="btn btn-primary" type='button'><h4>Movie/show Page</h4></button>
                 </Link> 
-                <button  className="btn btn-primary" onClick={() => this.moreInfo(this.props.movie.id)}><h5 className=''>More Info</h5></button>
                 
 
                 <p className="card-text"><b>Summary</b>: {this.props.movies.overview}</p>

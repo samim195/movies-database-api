@@ -10,8 +10,8 @@ class CastRow extends React.Component {
     render() {
 
         return (
-            <div class="container-fluid" style={{width: "50rem"}}>
-            <div class="col-sm-8 ">
+            <div className="container-fluid" style={{width: "50rem"}}>
+            <div className="col-sm-8 ">
             
                 <img className="card-img-top " src={this.props.cast.poster_src} alt="Card image cap" height='300'></img>
                 <h4 className='card-title' >{this.props.cast.name}</h4>
