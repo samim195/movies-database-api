@@ -393,6 +393,11 @@ const App = () => {
           <Route exact path={['/Home', '/']}>
             <header>
             <div className='column form-group'>
+            <h4>Make searches, filter by category using the drop down<br></br>
+                Or make a search and it will default to All<br></br>
+                Click the Trending button to find latest movies, tv shows or actors<br></br>
+                Filter also applies to the Trending button
+            </h4>
             <form onSubmit={searchButtonEnter} >
             <input className='form-control' id='searchBox' type="text" placeholder="Search.."  onChange={handleInputChange}/>
             </form>
