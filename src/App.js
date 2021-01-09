@@ -9,6 +9,7 @@ import Details from './Details/Details';
 import Actors from './Actors/Actors';
 import ShowsDetailPage from './showsDetailPage/ShowsDetailPage'
 import { Route, Link } from 'react-router-dom';
+import axios from 'axios';
 // import './dropdown.css'
 
 const App = () => {
@@ -40,6 +41,32 @@ const App = () => {
 //   }
 
 
+  const trendingMovies = async () => {
+    // <Get url="https://api.themoviedb.org/3/trending/all/day?api_key=21d7e7d170fcdc61c66d3c6d8d994196">
+    //   {(error, response, isLoading, makeRequest, axios) => {
+    //     if(error) {
+    //       console.log("Failed to reach endpoint Trending")
+    //     } else if (isLoading) {
+    //       console.log("Loading")
+    //     } else if (response !== null) {
+    //       console.log(response)
+    //     }
+    //   }}
+    // </Get>
+    const url = "https://api.themoviedb.org/3/trending/all/day?api_key=21d7e7d170fcdc61c66d3c6d8d994196"
+    const res = await axios.get(url)
+    const results = res.data.results;
+    var movies = []
+
+    results.forEach((movie) => {
+      movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
+      // console.log(movie.name)
+      movies.push(<MovieRow key={movie.id} movie={movie}/>)
+    });
+    // this.setState({movieList: movies})
+    setMovieList(movies)
+
+  }
 
   function searchButton() {
     hideSuggestion(false)
@@ -352,6 +379,7 @@ const App = () => {
             </form>
             <div className='dropdown'>
             <button className='homeButtons btn btn-primary' id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={searchButton} type="submit">Search</button>
+            <button className='homeButtons btn btn-primary' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={trendingMovies} type="submit">Trending</button>
             <select className="category btn btn-secondary dropdown-toggle" aria-labelledby="dropdownMenuButton">
             <option value="all">All</option>
             <option value="movies"> Movies</option>
