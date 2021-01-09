@@ -2,6 +2,7 @@ import { React, Component } from 'react';
 import $ from 'jquery';
 import { withRouter } from 'react-router-dom';
 import  CastRow  from './CastRow.js';
+import '../App.css'
 
 class Details extends Component {
     constructor(props) {
@@ -36,8 +37,7 @@ class Details extends Component {
     }
     render() {
         return (
-            <div>
-            <h1>Details Page</h1>
+            <div className="container">
                 {this.state.castList}
             </div>
         )

@@ -8,7 +8,7 @@ class ShowsDetailsRow extends React.Component {
         this.state = {showDiv: false}
     }
     render() {
-        return <table key={this.props.shows.id}>
+        return <table className='container' key={this.props.shows.id}>
         <tbody>
         <tr>
         <td>

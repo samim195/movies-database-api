@@ -42,7 +42,7 @@ const App = () => {
 
 
   function searchButton() {
-    hideSuggestion(!suggestion)
+    hideSuggestion(false)
     var category = $('select.category').val();
     console.log(category)
     // console.log("heloooooo")
@@ -167,7 +167,7 @@ const App = () => {
   function searchButtonEnter(e){
 
     e.preventDefault();
-    hideSuggestion(!suggestion)
+    hideSuggestion(false)
     var category = $('select.category').val();
     console.log(category)
     // console.log("heloooooo")
@@ -343,7 +343,7 @@ const App = () => {
   }
   
     return (
-        <div className='App'>
+        <div className='container'>
           <Route exact path={['/Home', '/']}>
             <header>
             <div className='column form-group'>
@@ -359,10 +359,11 @@ const App = () => {
             <option value="tv Shows"> TV Shows</option>
           </select>
           </div>
-          <div className="column LC20lb DKV0Md">
+          <div className="container-fluid">
           {
             suggestedNames.map(match => {
-              return (
+              
+              return ( 
                 <div className="Matches">
                 <Link
                 to={{
@@ -377,7 +378,7 @@ const App = () => {
             })
           }
           {movieList ? (
-            <div className='column'>
+            <div className='container'>
               {movieList}
             </div>
             ) : (

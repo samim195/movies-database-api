@@ -8,39 +8,36 @@ class ActorRow extends React.Component {
         this.state = {showDiv: false}
     }
     render() {
-        return <table key={this.props.movies.id}>
-        <tbody>
-        <tr>
-        <td>
-        
-        </td>
-        <td>
-            <h3>Title: {this.props.movies.original_title}</h3>
-            <Link
-            to={{
-                pathname: "/showsdetail",
-                id: this.props.movies.id // your data array of objects
-            }}
-            >
-            <button type='button'>movie/show Page</button>
-            </Link>
 
-            <div>
-            <p><b>Summary</b>: {this.props.movies.overview}</p>
+        return (
+            <div class="container-fluid" style={{width: "50rem"}}>
+            <div class="col-sm-7 ">
+                <img className="card-img-top " src={this.props.movies.poster_src} alt="Card image cap"></img>
+                <div className="card-body">
+                <h2 className='card-title'>{this.props.movies.original_title}</h2>
+
+                <Link className=""
+                to={{
+                    pathname: "/showsdetail",
+                    id: this.props.movies.id // your data array of objects
+                }}
+                >
+                <button className="btn btn-primary" type='button'><h4>Movie/show Page</h4></button>
+                </Link> 
+                <button  className="btn btn-primary" onClick={() => this.moreInfo(this.props.movie.id)}><h5 className=''>More Info</h5></button>
+                
+
+                <p className="card-text"><b>Summary</b>: {this.props.movies.overview}</p>
+                <div style={{display: this.state.showDiv ? 'block' : 'none'}} id={this.props.movies.id}>
+                <p className="card-text"><b>original_language</b>: {this.props.movies.original_language}</p>
+                <p className="card-text"><b>Release Date </b> {this.props.movies.release_date}/10</p>
+                </div>
+                </div>
+            </div>
             </div>
 
-            <div>
-            <img src={this.props.movies.poster_src} alt="prof pic" width="250" height="250"/>
-            </div>
+        )
 
-            <div id={this.props.movies.id}>
-                <p><b>original_language</b>: {this.props.movies.original_language}</p>
-                <p><b>Release Date </b> {this.props.movies.release_date}/10</p>
-            </div>
-        </td>
-        </tr>
-        </tbody>
-        </table>
     }
 }
 
