@@ -16,3 +16,11 @@
     margin-right: 100px;
     
   }
+
+.card-img {
+    height: 400px;
+    width: 50%;
+    border-top-left-radius: calc(.25rem - 1px) ;
+    border-top-right-radius: calc(.25rem - 1px);
+    position: centre;
+}

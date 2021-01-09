@@ -332,7 +332,7 @@ const App = () => {
   }
   
     return (
-        <div className=''>
+        <div className='App'>
           <Route exact path={['/Home', '/']}>
             <header>
             <div className='column form-group'>

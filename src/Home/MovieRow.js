@@ -10,26 +10,31 @@ class MovieRow extends React.Component {
     render() {
 
         return (
-            <div class="card">
-            
-                <img className="card-img-top" src={this.props.movie.poster_src} alt="Card image cap" height='500px' width='300px'></img>
-                <button  className='card-title' onClick={() => this.moreInfo(this.props.movie.id)}><h4>Title: {this.props.movie.title}</h4></button>
-
-                <Link
+            <div class="row">
+            <div class="col-sm-6 ">
+            <div classNAme="card">
+            <h2 className=''>{this.props.movie.title}</h2>
+                <img className="" src={this.props.movie.poster_src} alt="Card image cap"></img>
+                <Link 
                 to={{
                     pathname: "/Details",
                     id: this.props.movie.id // your data array of objects
                 }}
                 >
                 <button type='button'><h4>Details Page</h4></button>
-                </Link>
+                </Link> 
+                <button  className="" onClick={() => this.moreInfo(this.props.movie.id)}><h5 className=''>More Info</h5></button>
+
+                </div>
+
                 <p className="card-text"><b>Summary</b>: {this.props.movie.overview}</p>
                 <div style={{display: this.state.showDiv ? 'block' : 'none'}} id={this.props.movie.id}>
                 <p className="card-text"><b>Popularity</b>: {this.props.movie.popularity}</p>
                 <p className="card-text"><b>Release Date</b>: {this.props.movie.release_date}</p>
                 <p className="card-text"><b>Original Title</b>: {this.props.movie.original_title}</p>
                 <p className="card-text"><b>Votes on Average</b> {this.props.movie.vote_average}/10</p>
-            </div>
+                </div>
+                </div>
             </div>
         )
     }

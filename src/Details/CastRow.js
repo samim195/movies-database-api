@@ -10,9 +10,11 @@ class CastRow extends React.Component {
     render() {
 
         return (
+            <div class="row">
+            <div class="col-sm-6 ">
             <div class="card">
             
-                <img src={this.props.cast.poster_src} alt="Card image cap" height='300' width='25%' border-top-left-radius='calc(.25rem - 1px)' border-top-right-radius='calc(.25rem - 1px)'></img>
+                <img className="card" src={this.props.cast.poster_src} alt="Card image cap" height='300'></img>
                 <h4 className='card-title' >Title: {this.props.cast.name}</h4>
 
                 <Link
@@ -28,6 +30,8 @@ class CastRow extends React.Component {
                 <p><b>Gender</b>: {this.props.cast.gender}</p>
                 <p><b>Acting</b>: {this.props.cast.known_for_department}</p>
                 <p><b>Profile Path </b> {this.props.cast.profile_path}/10</p>
+            </div>
+            </div>
             </div>
             </div>
         )
