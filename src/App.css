@@ -108,3 +108,16 @@
 .title {
   padding-top: 25px;
 }
+
+.form-box{
+  position: relative;
+  left: 300px;
+  margin-top: 10px;
+}
+
+.suggestions{
+  position: relative;
+  float: left;
+  margin-left: 100px;
+
+}

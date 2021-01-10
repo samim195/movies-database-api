@@ -10,7 +10,7 @@ class MovieRow extends React.Component {
     render() {
 
         return (
-            <div className="container-fluid" style={{width: "50rem"}}>
+            <li className=" con-1" style={{width: "50rem"}}>
             <div className="col-sm-7 ">
                 <img className="card-img-top " src={this.props.movie.poster_src} alt="Card image cap"></img>
                 <div className="card-body">
@@ -36,7 +36,7 @@ class MovieRow extends React.Component {
                 </div>
                 </div>
             </div>
-            </div>
+            </li>
 
         )
     }

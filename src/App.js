@@ -42,17 +42,6 @@ const App = () => {
 
 
   const trendingMovies = async () => {
-    // <Get url="https://api.themoviedb.org/3/trending/all/day?api_key=21d7e7d170fcdc61c66d3c6d8d994196">
-    //   {(error, response, isLoading, makeRequest, axios) => {
-    //     if(error) {
-    //       console.log("Failed to reach endpoint Trending")
-    //     } else if (isLoading) {
-    //       console.log("Loading")
-    //     } else if (response !== null) {
-    //       console.log(response)
-    //     }
-    //   }}
-    // </Get>
       var category = $('select.category').val();
       if (category == 'tv shows') {
         category = 'tv'
@@ -253,7 +242,7 @@ const App = () => {
             console.log("Fetched data successfullu")
             console.log(searchResults['results'])
             const results = searchResults['results']
-    
+            
             var movies = []
     
             results.forEach((movie) => {
@@ -389,11 +378,12 @@ const App = () => {
   }
   
     return (
-        <div className='container'>
+        <div className=''>
           <Route exact path={['/Home', '/']}>
             <header>
-            <div className='column form-group'>
-            <h4>Make searches, filter by category using the drop down<br></br>
+            <div className='column form-group form-box'>
+            <h4>
+                Make searches, filter by category using the drop down<br></br>
                 Or make a search and it will default to All<br></br>
                 Click the Trending button to find latest movies, tv shows or actors<br></br>
                 Filter also applies to the Trending button
@@ -404,19 +394,20 @@ const App = () => {
             <div className='dropdown'>
             <button className='homeButtons btn btn-primary' id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={searchButton} type="submit">Search</button>
             <button className='homeButtons btn btn-primary' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={trendingMovies} type="submit">Trending</button>
-            <select className="category btn btn-secondary dropdown-toggle" aria-labelledby="dropdownMenuButton">
+            <select className="category homeButtons btn btn-secondary dropdown-toggle" aria-labelledby="dropdownMenuButton">
             <option value="all">All</option>
             <option value="movies"> Movies</option>
             <option value="people"> People</option>
             <option value="tv shows"> TV Shows</option>
           </select>
           </div>
-          <div className="container-fluid">
+          </div>
+          <div className="suggestions">
           {
             suggestedNames.map(match => {
               
               return ( 
-                <div className="Matches">
+                <div className="">
                 <Link
                 to={{
                     pathname: "/Details",
@@ -430,7 +421,7 @@ const App = () => {
             })
           }
           {movieList ? (
-            <div className='container'>
+            <div className='con-1'>
               {movieList}
             </div>
             ) : (
@@ -439,7 +430,6 @@ const App = () => {
             }
           
           </div>
-            </div>
             </header>
 
             

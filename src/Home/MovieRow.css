@@ -24,3 +24,11 @@
     border-top-right-radius: calc(.25rem - 1px);
     position: centre;
 }
+.con-1{
+    float: right;
+    margin: 4px;
+    display: inline;
+    vertical-align: top;
+    /* position: relative; */
+    /* left: 500px; */
+}
