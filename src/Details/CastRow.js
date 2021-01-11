@@ -10,7 +10,7 @@ class CastRow extends React.Component {
     render() {
 
         return (
-            <div className="container-fluid" style={{width: "50rem"}}>
+            <li className="con-2" style={{width: "50rem"}}>
             <div className="col-sm-8 ">
             
                 <img className="card-img-top " src={this.props.cast.poster_src} alt="Card image cap" height='300'></img>
@@ -31,7 +31,7 @@ class CastRow extends React.Component {
                 <p className="card-text"><b>Profile Path </b> {this.props.cast.profile_path}/10</p>
             </div>
             </div>
-            </div>
+            </li>
         )
     }
     // moreInfo() {

@@ -116,7 +116,7 @@
 }
 
 .suggestions{
-  position: relative;
+  /* position: relative; */
   float: left;
   margin-left: 100px;
 

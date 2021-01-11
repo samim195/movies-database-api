@@ -37,7 +37,7 @@ class Actors extends Component {
         }
     render() {
         return (
-            <div className="container">
+            <div className="">
                 {this.state.movieList}
             </div>
         )

@@ -37,7 +37,7 @@ class Details extends Component {
     }
     render() {
         return (
-            <div className="container">
+            <div className="suggestions">
                 {this.state.castList}
             </div>
         )

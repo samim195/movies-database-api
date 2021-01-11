@@ -3,37 +3,27 @@ import '../Home/MovieRow.css';
 import { withRouter } from 'react-router-dom';
 
 class ShowsDetailsRow extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {showDiv: false}
-    }
-    render() {
-        return <table className='container' key={this.props.shows.id}>
-        <tbody>
-        <tr>
-        <td>
-        
-        </td>
-        <td>
-            <h3>Title: {this.props.shows.original_title}</h3>
 
-            <div>
-            <p><b>Summary</b>: {this.props.shows.overview}</p>
+    render() {
+        return (
+        <li className=''>
+        <div className="container-fluid" style={{width: "50rem"}}>
+        <div className="col-sm-7 ">
+            <img className="card-img-top " src={this.props.shows.poster_src} alt="Card image cap"></img>
+            <div className="card-body">
+            <h2 className='card-title'>{this.props.shows.id}</h2>
+            <p className="card-text"><b>Summary</b>: {this.props.shows.overview}</p>
+            <p className="card-text"><b>popularity</b>: {this.props.shows.popularity}</p>
+            <p className="card-text"><b>Release Date </b> {this.props.shows.release_date}</p>
+            <p><b>Revenue </b> {this.props.shows.revenue}/10</p>
+            <a href={this.props.shows.homepage}>{this.props.shows.homepage}</a>
+            <h4>{this.props.shows.tagline}</h4>
             </div>
-            <div>
-            <img src={this.props.shows.poster_src} alt="prof pic" width="300" height="300"/>
             </div>
-            <div id={this.props.shows.id}>
-                <p><b>popularity</b>: {this.props.shows.popularity}</p>
-                <p><b>Release Date </b> {this.props.shows.release_date}/10</p>
-                <p><b>Revenue </b> {this.props.shows.revenue}/10</p>
-                <a href={this.props.shows.homepage}>{this.props.shows.homepage}</a>
-                <h4>{this.props.shows.tagline}</h4>
-            </div>
-        </td>
-        </tr>
-        </tbody>
-        </table>
+        </div>
+    </li>
+        )
+
     }
 }
 
