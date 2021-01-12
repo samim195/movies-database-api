@@ -22,7 +22,7 @@ class CastRow extends React.Component {
                     id: this.props.cast.name // your data array of objects
                 }}
                 >
-                <button type='button'>Cast Page</button>
+                <button className="btn btn-primary" type='button'>Cast Page</button>
                 </Link>
                 <div id={this.props.cast.id}>
                 <p className="card-text"><b>Popularity</b>: {this.props.cast.popularity}</p>

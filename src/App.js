@@ -46,8 +46,8 @@ const App = () => {
       if (category == 'tv shows') {
         category = 'tv'
       } else if (category == 'movies') {
-        category = 'movie'
-      } else {
+        category = 'movie'  
+      } else if (category == 'people') {
         category = 'person'
       }
       console.log(category)

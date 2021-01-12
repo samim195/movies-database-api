@@ -5,7 +5,7 @@ import { withRouter, Link } from 'react-router-dom';
 class MovieRow extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {showDiv: false}
+        this.state = {showDiv: false, favourites: []}
     }
     render() {
 
@@ -24,8 +24,8 @@ class MovieRow extends React.Component {
                 >
                 <button className="btn btn-primary" type='button'><h4>Details Page</h4></button>
                 </Link> 
-                <button  className="btn btn-primary" onClick={() => this.moreInfo(this.props.movie.id)}><h5 className=''>More Info</h5></button>
-                
+                <button  className="btn btn-primary margin" onClick={() => this.moreInfo(this.props.movie.id)}><h5 className=''>More Info</h5></button>
+                <button  className="btn btn-primary margin" onClick={() => this.addToFavourites(this.props.movie)}><h5 className=''>Add To Favourites</h5></button>
 
                 <p className="card-text"><b>Summary</b>: {this.props.movie.overview}</p>
                 <div style={{display: this.state.showDiv ? 'block' : 'none'}} id={this.props.movie.id}>
@@ -49,6 +49,13 @@ class MovieRow extends React.Component {
             // hideElem.style.display = 'none';
             this.setState({showDiv: false})
         }
+    }
+    addToFavourites(movie) {
+        console.log(movie)
+        console.log("values of movie")
+        this.setState(previousState => ({
+            favourites: [...previousState.favourites, movie]
+        }));
     }
 }
 
