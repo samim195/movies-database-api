@@ -8,35 +8,34 @@ class PeopleRow extends React.Component {
         this.state = {showDiv: false}
     }
     render() {
-        return <table key={this.props.movie.id}>
-        <tbody>
-        <tr>
-        <td>
-        
-        </td>
-        <td>
-            <button  onClick={() => this.moreInfo(this.props.movie.id)}><h3>Title: {this.props.movie.name}</h3></button>
-            <Link
-                to={{
-                    pathname: "/Actors",
-                    id: this.props.movie.name // your data array of objects
-                }}
-                >
-                <button type='button'>Actors Page</button>
-                </Link>
-            <div>
-                <img src={this.props.movie.poster_src} alt="prof pic" width="400" height="400"/>
+
+    return (
+        <li className=" con-1" style={{width: "50rem"}}>
+        <div className="col-sm-7 ">
+            <img className="card-img-top " src={this.props.movie.poster_src} alt="Card image cap"></img>
+            <div className="card-body">
+            <h2 className='card-title'>{this.props.movie.name}</h2>
+
+            <Link className=""
+            to={{
+                pathname: "/Actors",
+                id: this.props.movie.name // your data array of objects
+            }}
+            >
+            <button className="btn btn-primary" type='button'><h4>Actors Page</h4></button>
+            </Link> 
+
+            <div  id={this.props.movie.id}>
+            <p className="card-text"><b>Popularity</b>: {this.props.movie.popularity}</p>
+            <p className="card-text"><b>Known For</b>: {this.props.movie.known_for_department}</p>
+            <p className="card-text"><b>Votes on Average</b> {this.props.movie.vote_average}/10</p>
             </div>
-            <div style={{display: this.state.showDiv ? 'block' : 'none'}} id={this.props.movie.id}>
-                <p><b>Popularity</b>: {this.props.movie.popularity}</p>
-                <p><b>Known For</b>: {this.props.movie.known_for_department}</p>
-                <p><b>Votes on Average</b> {this.props.movie.vote_average}/10</p>
             </div>
-        </td>
-        </tr>
-        </tbody>
-        </table>
-    }
+        </div>
+        </li>
+
+    )
+}
     moreInfo() {
         var hideElem = document.getElementById(this.props.movie.id)
         if (hideElem.style.display === 'none') {
