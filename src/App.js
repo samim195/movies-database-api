@@ -380,18 +380,36 @@ const App = () => {
     return (
         <div className=''>
           <Route exact path={['/Home', '/']}>
-            <header>
-            <div className='column form-group form-box'>
+          <table>
+          <tbody>
+          <tr>
+          <td>
+            <h1 style={{
+              backgroundColor: '#000',
+              display: 'block',
+              color: '#fff',
+              fontSize: 50,
+              paddingLeft: 30
+            }}
+            >Movie Search DB</h1>
+            </td>
+            </tr>
+            <tr style={{paddingLeft: 30}}>
+            <td>
             <h4>
                 Make searches, filter by category using the drop down<br></br>
                 Or make a search and it will default to All<br></br>
                 Click the Trending button to find latest movies, tv shows or actors<br></br>
                 Filter also applies to the Trending button
             </h4>
+            </td>
+            </tr>
+            <tr>
+            <td>
             <form onSubmit={searchButtonEnter} >
             <input className='form-control' id='searchBox' type="text" placeholder="Search.."  onChange={handleInputChange}/>
             </form>
-            <div className='dropdown'>
+            
             <button className='homeButtons btn btn-primary' id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={searchButton} type="submit">Search</button>
             <button className='homeButtons btn btn-primary' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={trendingMovies} type="submit">Trending</button>
             <select className="category homeButtons btn btn-secondary dropdown-toggle" aria-labelledby="dropdownMenuButton">
@@ -400,9 +418,10 @@ const App = () => {
             <option value="people"> People</option>
             <option value="tv shows"> TV Shows</option>
           </select>
-          </div>
-          </div>
-          <div className="suggestions">
+          </td>
+          </tr>
+          <tr>
+          <td>
           {
             suggestedNames.map(match => {
               
@@ -420,6 +439,8 @@ const App = () => {
                 )
             })
           }
+          </td>
+          </tr>
           {movieList ? (
             <div className='con-1'>
               {movieList}
@@ -428,11 +449,8 @@ const App = () => {
               <p>No Movies Found</p>
             )
             }
-          
-          </div>
-            </header>
-
-            
+              </tbody>
+            </table>
           </Route>
           <Route path='/Details' component={Details}/>
           <Route path='/Actors' component={Actors}/>
