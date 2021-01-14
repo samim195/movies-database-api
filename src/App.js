@@ -373,9 +373,8 @@ const App = () => {
   }
   
     return (
-        <div className="container-fluid">
+        <div className="jumbotron">
           <Route exact path={['/Home', '/']}>
-          <div className="jumbotron jumbotron-fluid">
             <h1 className="display-4">Movie Search DB</h1>
           
 
@@ -389,7 +388,6 @@ const App = () => {
             <form onSubmit={searchButtonEnter} >
             <input className='form-control' onChange={e => (setQuery(e.target.value))} id='searchBox' type="text" placeholder="Search.."  onChange={handleInputChange}/>
             </form>
-            
             <button className='homeButtons btn btn-primary' id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={searchButton} type="submit">Search</button>
             <button className='homeButtons btn btn-primary' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={trendingMovies} type="submit">Trending</button>
             <select className="category homeButtons btn btn-secondary dropdown-toggle" aria-labelledby="dropdownMenuButton">
@@ -398,12 +396,11 @@ const App = () => {
             <option value="people"> People</option>
             <option value="tv shows"> TV Shows</option>
           </select>
-
+          <div className="container">
           {
             suggestedNames.map(match => {
               
-              return ( 
-                <div className="" style={{backgroundColor: "transparent"}}>
+              return (
                 <Link
                 to={{
                     pathname: "/Details",
@@ -412,12 +409,10 @@ const App = () => {
                 >
                 <button style={{display: suggestion ? 'block' : 'none'}} type='button'>{match.name}</button>
                 </Link>
-                </div>
                 )
-            })
+            }).sort()
           }
           </div>
-
           {movieList ? (
             <div>
               {movieList}
