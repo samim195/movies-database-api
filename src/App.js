@@ -81,13 +81,10 @@ const App = () => {
     var category = $('select.category').val();
     console.log(category)
     // console.log("heloooooo")
-    // var query = 'elite'
-    var query = $('#searchBox').val()
-    console.log(query)
     // const url = "https://api.themoviedb.org/3/search/movie?api_key=21d7e7d170fcdc61c66d3c6d8d994196&query=" + query + "&page=1";
     if (category == 'all') {
       console.log("seachring for everything")
-      const url = "https://api.themoviedb.org/3/search/multi?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&query=" + query + "&page=1&include_adult=false"
+      const url = "https://api.themoviedb.org/3/search/multi?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&query=" + queryInput + "&page=1&include_adult=false"
       $.ajax({
         url: url,
         success: (searchResults) => {
@@ -111,7 +108,7 @@ const App = () => {
       })
     } else if (category == 'movies') {
       console.log("seachring movies")
-        const url = "https://api.themoviedb.org/3/search/movie?api_key=21d7e7d170fcdc61c66d3c6d8d994196&query=" + query + "&page=1";    
+        const url = "https://api.themoviedb.org/3/search/movie?api_key=21d7e7d170fcdc61c66d3c6d8d994196&query=" + queryInput + "&page=1";    
         $.ajax({
           url: url,
           success: (searchResults) => {
@@ -136,7 +133,7 @@ const App = () => {
         })
       } else if (category == 'people') {
         console.log("seaching people")
-        var inputValue = query.split(" ")
+        var inputValue = queryInput.split(" ")
         var newQuery = ''
         for (let i=0; i<inputValue.length; i++) {
           newQuery += inputValue[i]
@@ -173,7 +170,7 @@ const App = () => {
           
         })
       } else if (category == 'tv shows') {
-        const url = 'https://api.themoviedb.org/3/search/tv?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&page=1&query='+query+'&include_adult=false';
+        const url = 'https://api.themoviedb.org/3/search/tv?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&page=1&query='+queryInput+'&include_adult=false';
         console.log("seachring tv shows")
         $.ajax({
           url: url,
@@ -207,10 +204,8 @@ const App = () => {
     console.log(category)
     // console.log("heloooooo")
     // var query = 'elite'
-    var query = $('#searchBox').val()
-    console.log(query)
     // const url = "https://api.themoviedb.org/3/search/movie?api_key=21d7e7d170fcdc61c66d3c6d8d994196&query=" + query + "&page=1";
-    const url = "https://api.themoviedb.org/3/search/multi?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&query=" + query + "&page=1&include_adult=false"
+    const url = "https://api.themoviedb.org/3/search/multi?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&query=" + queryInput + "&page=1&include_adult=false"
 
     if (category == 'all') {
       $.ajax({
@@ -235,7 +230,7 @@ const App = () => {
         }
       })
     } else if (category == 'movies') {
-        const url = "https://api.themoviedb.org/3/search/movie?api_key=21d7e7d170fcdc61c66d3c6d8d994196&query=" + query + "&page=1";    
+        const url = "https://api.themoviedb.org/3/search/movie?api_key=21d7e7d170fcdc61c66d3c6d8d994196&query=" + queryInput + "&page=1";    
         $.ajax({
           url: url,
           success: (searchResults) => {
@@ -260,7 +255,7 @@ const App = () => {
         })
       } else if (category == 'people') {
         console.log("searching people")
-        var inputValue = query.split(" ")
+        var inputValue = queryInput.split(" ")
         var newQuery = ''
         for (let i=0; i<inputValue.length; i++) {
           newQuery += inputValue[i]
@@ -295,7 +290,7 @@ const App = () => {
           
         })
       } else if (category == 'tv shows') {
-        const url = 'https://api.themoviedb.org/3/search/tv?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&page=1&query='+query+'&include_adult=false';
+        const url = 'https://api.themoviedb.org/3/search/tv?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&page=1&query='+queryInput+'&include_adult=false';
         $.ajax({
           url: url,
           success: (searchResults) => {
@@ -337,11 +332,10 @@ const App = () => {
   function checkInput () {
     // console.log("heloooooo")
     // var query = 'elite'
-    var query = $('#searchBox').val()
     // console.log(query)
     
     // const url = "https://api.themoviedb.org/3/search/movie?api_key=21d7e7d170fcdc61c66d3c6d8d994196&query=" + query + "&page=1";
-    const url = "https://api.themoviedb.org/3/search/multi?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&query=" + query + "&page=1&include_adult=false"
+    const url = "https://api.themoviedb.org/3/search/multi?api_key=21d7e7d170fcdc61c66d3c6d8d994196&language=en-US&query=" + queryInput + "&page=1&include_adult=false"
 
     $.ajax({
       url: url,
@@ -392,7 +386,7 @@ const App = () => {
             </p>
 
             <form onSubmit={searchButtonEnter} >
-            <input className='form-control' id='searchBox' type="text" placeholder="Search.."  onChange={handleInputChange}/>
+            <input className='form-control' onChange={e => (setQuery(e.target.value))} id='searchBox' type="text" placeholder="Search.."  onChange={handleInputChange}/>
             </form>
             
             <button className='homeButtons btn btn-primary' id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={searchButton} type="submit">Search</button>
