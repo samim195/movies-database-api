@@ -100,25 +100,3 @@
 * {
   box-sizing: border-box;
 }
-
-.topBox {
-  height: 50px;
-}
-
-.title {
-  padding-top: 25px;
-}
-
-.form-box{
-  position: relative;
-  left: 300px;
-  margin-top: 10px;
-}
-
-.suggestions{
-  position: fixed;
-  float: left;
-  /* margin-right: 100px; */
-  top: 300px;
-  left: 100px;
-}

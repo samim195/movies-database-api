@@ -10,12 +10,11 @@ class MovieRow extends React.Component {
     render() {
 
         return (
-            <li className=" con-1" style={{width: "50rem"}}>
-            <div className="col-sm-7 ">
-                <img className="card-img-top " src={this.props.movie.poster_src} alt="Card image cap"></img>
-                <div className="card-body">
-                <h2 className='card-title'>{this.props.movie.title}</h2>
-
+            <div class="card con-2 margin" style={{width: "25rem", height: "100%"}}>
+            <img class="card-img-top" src={this.props.movie.poster_src}  alt="Card image cap"/>
+            <div class="card-body">
+                <h5 class="card-title">{this.props.movie.title}</h5>
+                <p class="card-text">{this.props.movie.overview}</p>
                 <Link className=""
                 to={{
                     pathname: "/Details",
@@ -27,17 +26,15 @@ class MovieRow extends React.Component {
                 <button  className="btn btn-primary margin" onClick={() => this.moreInfo(this.props.movie.id)}><h5 className=''>More Info</h5></button>
                 <button  className="btn btn-primary margin" onClick={() => this.addToFavourites(this.props.movie)}><h5 className=''>Add To Favourites</h5></button>
 
-                <p className="card-text"><b>Summary</b>: {this.props.movie.overview}</p>
+
                 <div style={{display: this.state.showDiv ? 'block' : 'none'}} id={this.props.movie.id}>
                 <p className="card-text"><b>Popularity</b>: {this.props.movie.popularity}</p>
                 <p className="card-text"><b>Release Date</b>: {this.props.movie.release_date}</p>
                 <p className="card-text"><b>Original Title</b>: {this.props.movie.original_title}</p>
                 <p className="card-text"><b>Votes on Average</b> {this.props.movie.vote_average}/10</p>
                 </div>
-                </div>
             </div>
-            </li>
-
+            </div>
         )
     }
     moreInfo() {

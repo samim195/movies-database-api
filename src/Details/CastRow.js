@@ -10,11 +10,11 @@ class CastRow extends React.Component {
     render() {
 
         return (
-            <li className="con-2" style={{width: "50rem"}}>
-            <div className="col-sm-8 ">
-            
-                <img className="card-img-top " src={this.props.cast.poster_src} alt="Card image cap" height='300'></img>
-                <h4 className='card-title' >{this.props.cast.name}</h4>
+            <div class="card con-2 margin" style={{width: "25rem"}}>
+            <img class="card-img-top" src={this.props.cast.poster_src} alt="Card image cap"/>
+            <div class="card-body">
+                <h5 class="card-title">{this.props.cast.name}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 
                 <Link
                 to={{
@@ -31,19 +31,9 @@ class CastRow extends React.Component {
                 <p className="card-text"><b>Profile Path </b> {this.props.cast.profile_path}/10</p>
             </div>
             </div>
-            </li>
+            </div>
         )
     }
-    // moreInfo() {
-    //     var hideElem = document.getElementById(this.props.cast.id)
-    //     if (hideElem.style.display === 'none') {
-    //         // hideElem.style.display = 'block;';
-    //         this.setState({showDiv: true})
-    //     } else {
-    //         // hideElem.style.display = 'none';
-    //         this.setState({showDiv: false})
-    //     }
-    // }
     detailsPage() {
         this.props.history.push("/Details");
     }

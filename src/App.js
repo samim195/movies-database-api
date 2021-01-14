@@ -378,34 +378,19 @@ const App = () => {
   }
   
     return (
-        <div className=''>
+        <div className="container-fluid">
           <Route exact path={['/Home', '/']}>
-          <table>
-          <tbody>
-          <tr>
-          <td>
-            <h1 style={{
-              backgroundColor: '#000',
-              display: 'block',
-              color: '#fff',
-              fontSize: 50,
-              paddingLeft: 30
-            }}
-            >Movie Search DB</h1>
-            </td>
-            </tr>
-            <tr style={{paddingLeft: 30}}>
-            <td>
-            <h4>
+          <div className="jumbotron jumbotron-fluid">
+            <h1 className="display-4">Movie Search DB</h1>
+          
+
+            <p className="lead">
                 Make searches, filter by category using the drop down<br></br>
                 Or make a search and it will default to All<br></br>
                 Click the Trending button to find latest movies, tv shows or actors<br></br>
                 Filter also applies to the Trending button
-            </h4>
-            </td>
-            </tr>
-            <tr>
-            <td>
+            </p>
+
             <form onSubmit={searchButtonEnter} >
             <input className='form-control' id='searchBox' type="text" placeholder="Search.."  onChange={handleInputChange}/>
             </form>
@@ -418,15 +403,12 @@ const App = () => {
             <option value="people"> People</option>
             <option value="tv shows"> TV Shows</option>
           </select>
-          </td>
-          </tr>
-          <tr>
-          <td>
+
           {
             suggestedNames.map(match => {
               
               return ( 
-                <div className="">
+                <div className="" style={{backgroundColor: "transparent"}}>
                 <Link
                 to={{
                     pathname: "/Details",
@@ -439,18 +421,17 @@ const App = () => {
                 )
             })
           }
-          </td>
-          </tr>
+          </div>
+
           {movieList ? (
-            <div className='con-1'>
+            <div>
               {movieList}
             </div>
             ) : (
               <p>No Movies Found</p>
             )
             }
-              </tbody>
-            </table>
+
           </Route>
           <Route path='/Details' component={Details}/>
           <Route path='/Actors' component={Actors}/>

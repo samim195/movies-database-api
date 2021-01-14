@@ -10,12 +10,11 @@ class PeopleRow extends React.Component {
     render() {
 
     return (
-        <li className=" con-1" style={{width: "50rem"}}>
-        <div className="col-sm-7 ">
-            <img className="card-img-top " src={this.props.movie.poster_src} alt="Card image cap"></img>
-            <div className="card-body">
-            <h2 className='card-title'>{this.props.movie.name}</h2>
-
+        <div class="card con-2 margin" style={{width: "25rem"}}>
+        <img class="card-img-top" src={this.props.movie.poster_src} alt="Card image cap"/>
+        <div class="card-body">
+            <h5 class="card-title">{this.props.movie.name}</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             <Link className=""
             to={{
                 pathname: "/Actors",
@@ -24,15 +23,14 @@ class PeopleRow extends React.Component {
             >
             <button className="btn btn-primary" type='button'><h4>Actors Page</h4></button>
             </Link> 
-
             <div  id={this.props.movie.id}>
             <p className="card-text"><b>Popularity</b>: {this.props.movie.popularity}</p>
             <p className="card-text"><b>Known For</b>: {this.props.movie.known_for_department}</p>
             <p className="card-text"><b>Votes on Average</b> {this.props.movie.vote_average}/10</p>
             </div>
-            </div>
         </div>
-        </li>
+        </div>
+
 
     )
 }
