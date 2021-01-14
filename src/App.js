@@ -1,3 +1,4 @@
+/* eslint eqeqeq: 0 */
 import './App.css';
 import './Form.css'
 import $ from 'jquery';

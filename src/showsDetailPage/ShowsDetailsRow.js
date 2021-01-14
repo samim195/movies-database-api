@@ -9,7 +9,7 @@ class ShowsDetailsRow extends React.Component {
         <li className=''>
         <div className="container-fluid" style={{width: "50rem"}}>
         <div className="col-sm-7 ">
-            <img className="card-img-top " src={this.props.shows.poster_src} alt="Card image cap"></img>
+            <img className="card-img-top " src={this.props.shows.poster_src} alt="Card  cap"></img>
             <div className="card-body">
             <h2 className='card-title'>{this.props.shows.id}</h2>
             <p className="card-text"><b>Summary</b>: {this.props.shows.overview}</p>

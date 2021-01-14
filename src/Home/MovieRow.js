@@ -10,11 +10,11 @@ class MovieRow extends React.Component {
     render() {
 
         return (
-            <div class="card float-left" style={{width: "25rem", height: "100%"}}>
-            <img class="card-img-top" src={this.props.movie.poster_src}  alt="Card image cap"/>
-            <div class="card-body">
-                <h5 class="card-title">{this.props.movie.title}</h5>
-                <p class="card-text">{this.props.movie.overview}</p>
+            <div className="card float-left" style={{width: "25rem", height: "100%"}}>
+            <img className="card-img-top" src={this.props.movie.poster_src}  alt="Card  cap"/>
+            <div className="card-body">
+                <h5 className="card-title">{this.props.movie.title}</h5>
+                <p className="card-text">{this.props.movie.overview}</p>
                 <Link className=""
                 to={{
                     pathname: "/Details",

@@ -10,11 +10,11 @@ class ActorRow extends React.Component {
     render() {
 
         return (
-            <div class="card margin con-2" style={{width: "400px"}}>
-            <img class="card-img-top" src={this.props.movies.poster_src} alt="Card image cap"/>
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">{this.props.movies.overview}</p>
+            <div className="card margin con-2" style={{width: "400px"}}>
+            <img className="card-img-top" src={this.props.movies.poster_src} alt="Card  cap"/>
+            <div className="card-body">
+                <h5 className="card-title">Card title</h5>
+                <p className="card-text">{this.props.movies.overview}</p>
                 <Link className=""
                 to={{
                     pathname: "/showsdetail",
