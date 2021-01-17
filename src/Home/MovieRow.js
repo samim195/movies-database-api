@@ -1,6 +1,7 @@
 import React from 'react';
 import './MovieRow.css';
 import { withRouter, Link } from 'react-router-dom';
+import axios from 'axios';
 
 class MovieRow extends React.Component {
     constructor(props) {
@@ -10,7 +11,7 @@ class MovieRow extends React.Component {
     render() {
 
         return (
-            <div className="card float-left" style={{width: "25rem", height: "100%"}}>
+            <section className="section-img card float-left con-1" style={{width: "25rem", height: "100%"}}>
             <img className="card-img-top" src={this.props.movie.poster_src}  alt="Card  cap"/>
             <div className="card-body">
                 <h5 className="card-title">{this.props.movie.title}</h5>
@@ -34,7 +35,7 @@ class MovieRow extends React.Component {
                 <p className="card-text"><b>Votes on Average</b> {this.props.movie.vote_average}/10</p>
                 </div>
             </div>
-            </div>
+            </section>
         )
     }
     moreInfo() {
@@ -53,6 +54,17 @@ class MovieRow extends React.Component {
         this.setState(previousState => ({
             favourites: [...previousState.favourites, movie]
         }));
+        
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/addfavourites',
+            data: movie,
+            headers: {"Access-Control-Allow-Origin": "*"}
+        })
+        .then(result => console.log(result))
+        .catch(err => {
+            console.log(err)
+        });
     }
 }
 
