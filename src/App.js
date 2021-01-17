@@ -373,8 +373,9 @@ const App = () => {
   }
   
     return (
-        <div className="jumbotron">
+        <div className="">
           <Route exact path={['/Home', '/']}>
+          <div className='jumbotron'>
             <h1 className="display-4">Movie Search DB</h1>
           
 
@@ -396,6 +397,7 @@ const App = () => {
             <option value="people"> People</option>
             <option value="tv shows"> TV Shows</option>
           </select>
+        </div>
           <div className="container">
           {
             suggestedNames.map(match => {
