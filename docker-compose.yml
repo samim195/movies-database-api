@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    command: npm start 
+    networks:
+    - serverside
+
+networks:
+  serverside:
+    driver: bridge
