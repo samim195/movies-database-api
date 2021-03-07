@@ -57,7 +57,7 @@ class MovieRow extends React.Component {
         
         axios({
             method: 'post',
-            url: 'http://localhost:3001/addfavourites',
+            url: 'http://localhost:5001/addfavourites',
             data: movie,
             headers: {"Access-Control-Allow-Origin": "*"}
         })
